@@ -1,0 +1,23 @@
+{
+  "name": "bookmark",
+  "authors": [
+    "djair-carvalho <djaircarvalho.dj7@gmail.com>"
+  ],
+  "description": "",
+  "main": "index.html",
+  "moduleType": [],
+  "keywords": [
+    "bookmark"
+  ],
+  "license": "MIT",
+  "homepage": "index.html",
+  "repository": "",
+  "private": true,
+  "dependencies": {
+    "angular": "latest",
+    "font-awesome": "latest",
+    "bootstrap": "latest",
+    "angular-resource": "^1.5.8",
+    "angular-route": "^1.5.8"
+  }
+}
