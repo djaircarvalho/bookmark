@@ -11,12 +11,10 @@ app.controller('userController', function ($scope) {
   };
 
   $scope.signin = function () {
-
       console.log("in");
   };
 
-  $scope.signup = function () {
-
+  $scope.logout = function () {
       console.log("out");
   };
 
