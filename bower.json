@@ -11,7 +11,7 @@
   ],
   "license": "MIT",
   "homepage": "index.html",
-  "repository": "",
+  "repository": "https://github.com/djaircarvalho/bookmark",
   "private": true,
   "dependencies": {
     "angular": "latest",
