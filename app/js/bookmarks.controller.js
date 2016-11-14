@@ -13,7 +13,15 @@ app.controller('bookmarksController', function ($http, $scope) {
       console.log(err);
     });
   $scope.addBookmark = function () {
-      $scope.bookmarks.push(angular.copy($scope.bookmark));
+    data = { bookmark:  $scope.bookmark   }
+    console.log(data);
+
+    $http.post(baseUrl, data, config)
+          .success(function (data, status, headers, config) {
+          })
+          .error(function (data, status, header, config) {
+          });
+
       console.log($scope.bookmarks);
   };
 
