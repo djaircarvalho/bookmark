@@ -18,8 +18,10 @@ app.controller('bookmarksController', function ($http, $scope) {
 
     $http.post(baseUrl, data, config)
           .success(function (data, status, headers, config) {
+            $scope.success = true
           })
           .error(function (data, status, header, config) {
+            $scope.error = data.error;
           });
 
       console.log($scope.bookmarks);

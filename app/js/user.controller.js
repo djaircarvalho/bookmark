@@ -1,6 +1,5 @@
 app.controller('userController', function ( $rootScope, $scope, $http) {
 
-
   var baseUrl = 'http://localhost:3000/';
   var config = {
       headers: {"Content-Type": "application/json", "Accept": "application/json"
@@ -16,10 +15,11 @@ app.controller('userController', function ( $rootScope, $scope, $http) {
             console.log(data);
           })
           .error(function (data, status, header, config) {
+            $scope.user.error = data;
             console.log(data);
           });
 
-      console.log($scope.user);
+      console.log($scope.user.error);
       console.log("up");
   };
 
@@ -32,7 +32,8 @@ app.controller('userController', function ( $rootScope, $scope, $http) {
             console.log(data);
           })
           .error(function (data, status, header, config) {
-            console.log(data.email);
+            $scope.user.error = data.error;
+            console.log(data.error);
           });
 
       console.log("in");
