@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ngRoute']);
+var app = angular.module('app', ['ngRoute',"ngStorage"]);
 
     // configure our routes
     app.config(function($routeProvider) {
@@ -43,9 +43,28 @@ var app = angular.module('app', ['ngRoute']);
     });
 
     // create the controller and inject Angular's $scope
-    app.controller('mainController', function($scope) {
+    app.controller('mainController', function($scope, TokenFactory) {
         // create a message to display in our view
         $scope.logout = function () {
-          console.log('Everyone come and see how good I look!');
+          TokenFactory.setToken(undefined);
         };
+
+        $scope.isLogged = function () {
+          return TokenFactory.hasToken();
+        };
+
     });
+
+    app.factory('TokenFactory', function($localStorage){
+    return {
+        getToken: function(){
+            return $localStorage.token;
+        },
+        setToken: function (token) {
+           $localStorage.token =  token;
+        },
+        hasToken: function(){
+          return $localStorage.token ? true: false ;
+        }
+    };
+});

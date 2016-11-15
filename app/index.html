@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>bookmark | v0.1.0</title>
     <link rel="icon" href="images/favicon.png">
-    <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="libraries/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="libraries/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
   </head>
-  <body >
+  <body>
 
     <nav class="navbar navbar-default" ng-controller="mainController">
       <div class="container-fluid">
@@ -18,26 +18,27 @@
           <a class="navbar-brand" href="#/">Bookmark</a>
         </div>
         <ul class="nav navbar-nav">
-          <li ><a href="#/">Home</a></li>
-          <li><a href="#bookmarks">Bookmarks</a></li>
-          <li><a href="#signup">Signup</a></li>
-          <li><a href="#signin">Signin</a></li>
-          <li><a href="#/" ng-click="logout()" >Logout</a></li>
+          <li ng-show="isLogged()" ><a href="#bookmarks">Bookmarks</a></li>
+          <li ng-hide="isLogged()"><a href="#signup">Signup</a></li>
+          <li ng-hide="isLogged()"><a href="#signin">Signin</a></li>
+          <li ng-show="isLogged()"><a href="#/" ng-click="logout()" >Logout</a></li>
         </ul>
         </div>
      </nav>
-     {{$rootScope.token}}
-     <div class="container" ng-view></div>
+     <!-- <div class="loading-spiner-holder" data-loading ><div class="loading-spiner"><img src="images/load.gif" /></div></div> -->
+     <div class="container center_div " ng-view></div>
 
       <script src="libraries/angular/angular.js"></script>
       <!-- <script src="libraries/angular-resource/angular-resource.js"></script> -->
       <script src="libraries/angular-route/angular-route.js"></script>
+      <script src="libraries/ngstorage/ngStorage.js" ></script>
       <script src="libraries/jquery/dist/jquery.min.js"></script>
       <script src="libraries/bootstrap/dist/js/bootstrap.js"></script>
       <script src="js/main.js" ></script>
       <script src="js/bookmarks.controller.js" ></script>
       <script src="js/user.controller.js" ></script>
       <script src="js/bookmark.service.js" ></script>
-        <script src="js/user.service.js" ></script>
+      <script src="js/user.service.js" ></script>
+      <script src="js/sharedServices.js" ></script>
   </body>
 </html>
