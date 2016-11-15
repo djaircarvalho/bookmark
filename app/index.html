@@ -12,7 +12,7 @@
   </head>
   <body >
 
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-default" ng-controller="mainController">
       <div class="container-fluid">
         <div class="navbar-header">
           <a class="navbar-brand" href="#/">Bookmark</a>
@@ -22,7 +22,7 @@
           <li><a href="#bookmarks">Bookmarks</a></li>
           <li><a href="#signup">Signup</a></li>
           <li><a href="#signin">Signin</a></li>
-          <li><a href="#logout">Logout</a></li>
+          <li><a href="#/" ng-click="logout()" >Logout</a></li>
         </ul>
         </div>
      </nav>

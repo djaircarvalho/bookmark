@@ -6,9 +6,18 @@
       <h1 class="h3">Bookmarks</h1>
       <p><input type="text" ng-model="filter" class="h3 form-control"></p>
     </header>
-    <ol class="list-group">
-        <li ng-repeat="bookmark in bookmarks |  filter : filter " hre class="list-group-item  clearfix" > <a href="{{bookmark.uri}}" target="_blank">{{bookmark.name}}  </a>  </li>
-    </ol>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="row" >
+            <div class="col-md-6" ng-repeat="bookmark in bookmarks |  filter : filter ">
+              <div class="well">
+                <h4 class="text-center"> <a href="{{bookmark.uri}}" target="_blank"> {{bookmark.name}} </a>
+                   <a href=""><span class="label label-danger pull-right" ng-click="removeBookmark(bookmark.id)">-</span></a></h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
   </section>
 
 </div>
