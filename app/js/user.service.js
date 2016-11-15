@@ -1,5 +1,5 @@
 app.service('userService', function($http) {
-  var baseUrl = 'http://localhost:3000/';
+  var baseUrl = 'https://secure-sands-90419.herokuapp.com/';
   var config = {
       headers: { "Content-Type": "application/json", "Accept": "application/json" }
     };

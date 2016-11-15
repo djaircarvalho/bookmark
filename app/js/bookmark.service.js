@@ -1,6 +1,6 @@
 app.service('bookmarkService', function($http, TokenFactory) {
 
-    var baseUrl = 'http://localhost:3000/bookmarks/';
+    var baseUrl = 'https://secure-sands-90419.herokuapp.com/bookmarks/';
     var config = {
       headers: {"Content-Type": "application/json", "Accept": "application/json",
       "Authorization":TokenFactory.getToken()
