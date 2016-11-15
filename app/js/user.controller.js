@@ -1,17 +1,11 @@
-app.controller('userController', function ( $rootScope, $scope, $http) {
-
-  var baseUrl = 'http://localhost:3000/';
-  var config = {
-      headers: {"Content-Type": "application/json", "Accept": "application/json"
-      }
-    }
+app.controller('userController', function ( $scope, $http, userService  ) {
 
   $scope.signup = function () {
     var data = { user:$scope.user};
 
-    var url = baseUrl + "signup";
-    $http.post(url, data, config)
+    userService.signup(data)
           .success(function (data, status, headers, config) {
+            $scope.user.error = "";
             console.log(data);
           })
           .error(function (data, status, header, config) {
@@ -25,11 +19,10 @@ app.controller('userController', function ( $rootScope, $scope, $http) {
 
   $scope.signin = function () {
     var data = $scope.user;
-    var url = baseUrl + "authenticate";
-    $http.post(url, data, config)
+    userService.signin(data)
           .success(function (data, status, headers, config) {
-            $rootScope.token = data.auth_token;
-            console.log(data);
+            var token = data.auth_token;
+            console.log(token);
           })
           .error(function (data, status, header, config) {
             $scope.user.error = data.error;
