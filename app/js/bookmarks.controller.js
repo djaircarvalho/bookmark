@@ -1,15 +1,9 @@
-app.controller('bookmarksController', function ($http, $scope) {
-  $scope.bookmarks = [];
-  var baseUrl = 'http://localhost:3000/bookmarks/';
-  var config = {
-      headers: {"Content-Type": "application/json", "Accept": "application/json",
-      "Authorization":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo0LCJleHAiOjE0NzkyNTc2NjR9.WnL2Eo8Al4iqb_J59SXphwXrekHbna0TVc45N3v2Kak"
-      }
-    };
+app.controller('bookmarksController', function ($http, $scope, bookmarkService) {
 
+  $scope.bookmarks = [];
 
   var load = function () {
-    $http.get(baseUrl, config)
+    bookmarkService.getAll()
       .then(function(response) {
         $scope.bookmarks = response.data;
       }, function(err) {
@@ -17,13 +11,9 @@ app.controller('bookmarksController', function ($http, $scope) {
       });
   } ;
 
-
-
   $scope.addBookmark = function () {
     data = { bookmark:  $scope.bookmark   };
-    console.log(data);
-
-    $http.post(baseUrl, data, config)
+      bookmarkService.post(data)
           .success(function (data, status, headers, config) {
             $scope.success = true;
             $scope.bookmark = {};
@@ -33,8 +23,7 @@ app.controller('bookmarksController', function ($http, $scope) {
           });
   };
   $scope.removeBookmark = function (id) {
-    var url= baseUrl + id;
-    $http.delete(url, config)
+    bookmarkService.delete(id)
      .then(
          function(response){
          load();
