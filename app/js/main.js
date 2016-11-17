@@ -1,7 +1,7 @@
 var app = angular.module('app', ['ngRoute',"ngStorage"]);
 
     // configure our routes
-    app.config(function($routeProvider) {
+    app.config(function($routeProvider, $httpProvider) {
         $routeProvider
 
             // route for the home page
@@ -40,7 +40,23 @@ var app = angular.module('app', ['ngRoute',"ngStorage"]);
               controller:'userController'
             })
           	.otherwise({redirectTo:'/'});
-    });
+});
+
+  app.run(['$rootScope',function($rootScope){
+      console.log("judehduedheduh");
+  	//Uma flag que define se o ícone de acesso ao servidor deve estar ativado
+  	$rootScope.showLoaderFlag = false;
+
+  	//Força que o ícone de acesso ao servidor seja ativado
+  	$rootScope.showLoader=function(){
+  		$rootScope.showLoaderFlag=true;
+  	};
+  	//Força que o ícone de acesso ao servidor seja desativado
+  	$rootScope.hideLoader=function(){
+  		$rootScope.showLoaderFlag=false;
+  	};
+
+}]);
 
     // create the controller and inject Angular's $scope
     app.controller('mainController', function($scope, TokenFactory) {
@@ -52,7 +68,6 @@ var app = angular.module('app', ['ngRoute',"ngStorage"]);
         $scope.isLogged = function () {
           return TokenFactory.hasToken();
         };
-
     });
 
     app.factory('TokenFactory', function($localStorage){

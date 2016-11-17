@@ -13,7 +13,7 @@
   <body>
 
      <!-- Static navbar -->
-      <nav class="navbar navbar-default" ng-controller="mainController">
+      <nav class="navbar navbar-default"  ng-controller="mainController">
         <div class="container-fluid">
           <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -33,16 +33,19 @@
               <li ng-hide="isLogged()"><a href="#signin"> <span class="glyphicon glyphicon-log-in"></span> Signin </a></li>
               <li ng-show="isLogged()"><a href="#/" ng-click="logout()" ><span class="glyphicon glyphicon-log-out"></span> Logout </a></li>
             </ul>
+            <form class="navbar-form pull-right">
+                <img src="images/ajax-loader.gif" ng-show="showLoaderFlag" class="pull-right">
+            </form>
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
       </nav>
      <!-- <div class="loading-spiner-holder" data-loading ><div class="loading-spiner"><img src="images/load.gif" /></div></div> -->
      <div class="container center_div " ng-view></div>
-     <footer class="footer">
+     <!-- <footer class="footer">
       <div class="container text-center">
         <span class="text-muted "> Developed by: <a href="mailto:djaircarvalho.dj7@gmail.com">Djair Carvalho</a>.</span>
       </div>
-    </footer>
+    </footer> -->
 
       <script src="libraries/angular/angular.js"></script>
       <!-- <script src="libraries/angular-resource/angular-resource.js"></script> -->
